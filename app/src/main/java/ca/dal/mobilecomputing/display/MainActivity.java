@@ -30,6 +30,15 @@ public class MainActivity extends AppCompatActivity {
         final Database database = new Database();
         studentList.setAdapter(new StudentCourseAdapter(mActivity, database.getStudentModels(), true));
 
+        studentList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int listIndex, long arg3) {
+                Intent detailsIntent = new Intent(MainActivity.this, StudentDetailActivity.class);
+
+                startActivity(detailsIntent);
+            }
+        });
+
 
     }
 
