@@ -37,16 +37,16 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, StudentDetailActivity.class);
                 Bundle bund = new Bundle();
 
-                //StudentModel stu = database.getStudentModels().get(listIndex);
+                StudentModel stu = database.getStudentModels().get(listIndex);
 
-                //intent.putExtra("studentID", stu.getId());
+                intent.putExtra("studentID", stu.getId());
 
-                //bund.putInt("age", stu.getAge());
-                //bund.putString("name", stu.getName());
+                bund.putInt("age", stu.getAge());
+                bund.putString("name", stu.getName());
 
-                //intent.putExtra("bundle", bund);
+                intent.putExtra("bundle", bund);
 
-                //startActivity(intent);
+                startActivity(intent);
             }
         });
 
