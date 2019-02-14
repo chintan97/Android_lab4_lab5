@@ -30,6 +30,29 @@ public class MainActivity extends AppCompatActivity {
         final Database database = new Database();
         studentList.setAdapter(new StudentCourseAdapter(mActivity, database.getStudentModels(), true));
 
+        studentList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int listIndex, long arg3) {
+                Intent detailsIntent = new Intent(MainActivity.this, StudentDetailActivity.class);
+                Bundle detailsBundle = new Bundle();
+
+                StudentModel currStudent = database.getStudentModels().get(listIndex);
+                String studentID = currStudent.getId();
+                String studentName = currStudent.getName();
+                int studentAge = currStudent.getAge();
+
+                // one item to pass
+                detailsIntent.putExtra("studentID", studentID);
+
+                // rest all in one bundle
+                detailsBundle.putString("name", studentName);
+                detailsBundle.putInt("age", studentAge);
+
+                detailsIntent.putExtra("bundle", detailsBundle);
+                startActivity(detailsIntent);
+            }
+        });
+
 
         studentList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
