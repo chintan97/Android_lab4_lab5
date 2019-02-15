@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 Bundle detailsBundle = new Bundle();
 
                 StudentModel currStudent = database.getStudentModels().get(listIndex);
-                String studentID = currStudent.getId();
+                String studentID = currStudent.getStudent_Id();
                 String studentName = currStudent.getName();
                 int studentAge = currStudent.getAge();
 
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
                 StudentModel stu = database.getStudentModels().get(listIndex);
 
-                intent.putExtra("studentID", stu.getId());
+                intent.putExtra("studentID", stu.getStudent_Id());
 
                 bund.putInt("age", stu.getAge());
                 bund.putString("name", stu.getName());
