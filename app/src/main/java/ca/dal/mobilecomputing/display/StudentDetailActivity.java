@@ -44,6 +44,6 @@ public class StudentDetailActivity extends AppCompatActivity {
         studentName.setText(name);
         studentID.setText(id);
         studentAge.setText(String.valueOf(age));
-        courseList.setAdapter(new StudentCourseAdapter(mActivity, new Database().getCoursesByStudentId(id)));
+        courseList.setAdapter(new StudentCourseAdapter(mActivity, new Database(mActivity).getCoursesByStudentId(id)));
     }
 }

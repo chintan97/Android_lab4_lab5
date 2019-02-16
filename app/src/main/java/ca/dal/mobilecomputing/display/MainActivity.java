@@ -17,6 +17,7 @@ import ca.dal.mobilecomputing.model.StudentModel;
 public class MainActivity extends AppCompatActivity {
 
     private Activity mActivity;
+    private Database database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         ListView studentList = findViewById(R.id.listview_students);
-        final Database database = new Database();
+        database = new Database(mActivity);
         studentList.setAdapter(new StudentCourseAdapter(mActivity, database.getStudentModels(), true));
 
         studentList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -75,4 +76,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        database.closeDatabase();
+    }
 }

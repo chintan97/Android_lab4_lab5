@@ -1,5 +1,7 @@
 package ca.dal.mobilecomputing.db;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -18,6 +20,7 @@ public class Database {
     private static final Map<String, String> COURSES_DATA = new HashMap<>();
     private List<StudentModel> studentModelList = new ArrayList<>();
     private List<CourseModel> courseModelList = new ArrayList<>();
+    private final StudentDataQueries mStudentDataQueries;
 
     static {
         STUDENT_NAME.put("B00773778", "Mihir");
@@ -41,10 +44,17 @@ public class Database {
     }
 
 
-    public Database() {
-        for (String key : STUDENT_NAME.keySet()) {  //NAME and AGE use the same keyset.
-            studentModelList.add(new StudentModel(key, STUDENT_NAME.get(key), STUDENT_AGE.get(key)));
+    public Database(Context context) {
+        mStudentDataQueries = new StudentDataQueries(context);
+        mStudentDataQueries.open();
+
+        if (mStudentDataQueries.isAppRunningFirstTime()) {
+            for (String key : STUDENT_NAME.keySet()) {  //NAME and AGE use the same keyset.
+                mStudentDataQueries.createStudent(new StudentModel(key, STUDENT_NAME.get(key), STUDENT_AGE.get(key)));
+            }
         }
+
+        studentModelList = mStudentDataQueries.getAllStudents();
 
         // Create a list of courses
         Set<String> courses = COURSES_DATA.keySet();
@@ -84,6 +94,23 @@ public class Database {
             }
         }
         return studentCourseModel;
+    }
+
+    public void closeDatabase(){
+        mStudentDataQueries.close();
+    }
+
+    public boolean updateStudent(StudentModel studentNew){
+        return mStudentDataQueries.updateStudent(studentNew);
+    }
+
+    public StudentModel getStuModelByID(String studentID){
+        for (StudentModel curr: studentModelList){
+            if (curr.getStudent_Id().equals(studentID)){
+                return curr;
+            }
+        }
+        return null;
     }
 
     /**
