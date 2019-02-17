@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
-
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -18,7 +17,6 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:title="@string/app_name" />
-
     </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
@@ -26,19 +24,18 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="15dp">
-
         <TextView
-            android:id="@+id/lblName"
+            android:id="@+id/labelID"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:layout_gravity="end"
             android:layout_weight="0.9"
-            android:hint="@string/stuName"
+            android:hint="ID"
             android:textAlignment="textEnd"
             android:textSize="24sp"/>
 
         <TextView
-            android:id="@+id/lblStudentName"
+            android:id="@+id/showStudentID"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
@@ -54,23 +51,23 @@
         android:layout_marginTop="15dp">
 
         <TextView
-            android:id="@+id/lblB00"
+            android:id="@+id/labelName"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:layout_gravity="end"
             android:layout_weight="0.9"
-            android:hint="@string/B00"
+            android:hint="Name"
             android:textAlignment="textEnd"
             android:textSize="24sp"/>
-
-        <TextView
-            android:id="@+id/lblStudentB00"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
+        <EditText
+            android:id="@+id/changeName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_weight="0.4"
             android:textSize="24sp"/>
+
     </LinearLayout>
 
     <LinearLayout
@@ -80,43 +77,32 @@
         android:layout_marginTop="15dp">
 
         <TextView
-            android:id="@+id/lblAge"
+            android:id="@+id/labelAge"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:layout_gravity="end"
             android:layout_weight="0.9"
-            android:hint="@string/age"
+            android:hint="Age"
             android:textAlignment="textEnd"
             android:textSize="24sp"/>
-
-        <TextView
-            android:id="@+id/lblStudentAge"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
+        <EditText
+            android:id="@+id/changeAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_weight="0.4"
             android:textSize="24sp"/>
+
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/listview_courses"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/updateDetails"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:dividerHeight="1dp"
-        android:isScrollContainer="false"
-        android:scrollbars="none"
-        android:layout_marginBottom="100dp">
-
-    </ListView>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/editFab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|end"
-        android:layout_margin="16dp"
-        android:src="@drawable/ic_edit_black_24dp"
-        app:backgroundTint="@color/design_default_color_primary"
-        app:rippleColor="@color/design_default_color_primary_dark"/>
+        android:layout_marginTop="20dp"
+        android:text="Save"
+        android:background="@color/colorPrimary"
+        android:layout_gravity="center"
+        />
 </LinearLayout>

@@ -21,6 +21,10 @@
 
         <activity android:name=".display.StudentDetailActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".display.update_details"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".display.StudentEditActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
